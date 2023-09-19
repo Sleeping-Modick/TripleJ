@@ -10,11 +10,20 @@ import UIKit
 final class DiaryViewModel {
     private let imageManager = ImageCacheManager.shared
     let dummyImageName = "dummy"
+    private var prevIndex: Int = 0
 }
 
 extension DiaryViewModel {
     var getItemCount: Int {
         return 10
+    }
+    
+    var getPrevIndex: Int {
+        return prevIndex
+    }
+    
+    func setPrevIndex(index: Int) {
+        prevIndex = index
     }
     
     var getImageName: String {

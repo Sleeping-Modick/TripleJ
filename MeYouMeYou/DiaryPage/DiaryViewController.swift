@@ -14,8 +14,6 @@ final class DiaryViewController: UIViewController {
     private let pictureView = PictureView()
     private let viewModel = DiaryViewModel()
     
-    private var prevIndex = 0
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -88,7 +86,7 @@ extension DiaryViewController: UICollectionViewDelegate, UICollectionViewDataSou
         if let cell = pictureView.collectionView.cellForItem(at: indexPath) {
             zoomFocusCell(cell: cell, isFocus: true)
         }
-        if Int(index) != prevIndex {
+        if Int(index) != viewModel.getPrevIndex {
             let preIndexPath = IndexPath(item: Int(index) - 1, section: 0)
             if let preCell = pictureView.collectionView.cellForItem(at: preIndexPath) {
                 zoomFocusCell(cell: preCell, isFocus: false)
@@ -97,7 +95,7 @@ extension DiaryViewController: UICollectionViewDelegate, UICollectionViewDataSou
             if let nextCell = pictureView.collectionView.cellForItem(at: nextIndexPath) {
                 zoomFocusCell(cell: nextCell, isFocus: false)
             }
-            prevIndex = indexPath.item
+            viewModel.setPrevIndex(index: indexPath.item)
         }
     }
     
