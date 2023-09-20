@@ -12,7 +12,8 @@ import UIKit
 
 class CalendarViewController: UIViewController {
     // MARK: Property
-
+    var dummyCalendarPostTitle =  (0...10).map { _ in "달력 게시글 제목 제목" }
+    
     var calendarDdayLabel: UILabel = {
         var label = UILabel()
         label.text = "  D-Day 101  "
@@ -76,19 +77,23 @@ class CalendarViewController: UIViewController {
     var calendarCollectionView: UICollectionView = {
         var layout = UICollectionViewFlowLayout()
         var view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        layout.itemSize = Constant.itemSize
-        layout.minimumInteritemSpacing = Constant.itemSpacing
+        layout.itemSize = CGSize(
+            width: (UIScreen.main.bounds.width / 2) - 5, height: (UIScreen.main.bounds.width / 2) - 5)
+        layout.minimumLineSpacing = 5
+        layout.minimumInteritemSpacing = 5
+        layout.scrollDirection = .horizontal
         view.layer.cornerRadius = Constant.cornerRadius
         view.backgroundColor = UIColor(named: "SubPrimaryColor")
         return view
     }()
     
     // MARK: LifeCycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
+        setCollectionView()
     }
     
     func configureUI() {
@@ -112,12 +117,15 @@ class CalendarViewController: UIViewController {
             $0.top.equalTo(calendarView.snp.bottom).inset(-Constant.calendarBasicMargin)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(Constant.calendarBasicMargin)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(Constant.calendarBasicMargin)
-            $0.height.equalTo(400)
+            $0.height.equalTo(200)
         }
     }
     
     func setCollectionView() {
+        calendarCollectionView.register(CalendarCollectionViewCell.self, forCellWithReuseIdentifier: CalendarCollectionViewCell.identifier)
         
+        calendarCollectionView.delegate = self
+        calendarCollectionView.dataSource = self
     }
 }
 
@@ -138,8 +146,22 @@ struct CalendarVCReprsentable: UIViewControllerRepresentable {
     typealias UIViewControllerType = UIViewController
 }
 
+extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return dummyCalendarPostTitle.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
+    -> UICollectionViewCell {
+        var cell = calendarCollectionView.dequeueReusableCell(
+            withReuseIdentifier: CalendarCollectionViewCell.identifier, for: indexPath) as? CalendarCollectionViewCell
+        cell?.bind(dummyCalendarPostTitle[indexPath.row])
+        return cell ?? UICollectionViewCell()
+    }
+}
+
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
-    // 공식 문서에서 레이아우울을 위해 아래의 코드 요구
+    // 공식 문서에서 레이아웃을 위해 아래의 코드 요구
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         calendar.snp.updateConstraints { make in
             make.height.equalTo(bounds.height)
@@ -157,7 +179,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         
         switch dateFormatter.string(from: date) {
         case dateFormatter.string(from: Date()):
-            return "오늘"
+            return "Today"
             
         default:
             return nil
@@ -165,11 +187,14 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     }
     
     // 일요일에 해당되는 모든 날짜의 색상 red로 변경
-    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date)
+    -> UIColor? {
         let day = Calendar.current.component(.weekday, from: date) - 1
         
-        if Calendar.current.shortWeekdaySymbols[day] == "일" {
+        if Calendar.current.shortWeekdaySymbols[day] == "Sun" {
             return .systemRed
+        } else if Calendar.current.shortWeekdaySymbols[day] == "Sat" {
+            return .systemBlue
         } else {
             return .label
         }

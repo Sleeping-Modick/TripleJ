@@ -30,6 +30,7 @@
 		33A5EAD82AB884DB003D76C9 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 33A5EAD72AB884DB003D76C9 /* .swiftlint.yml */; };
 		33A5EADB2AB885A0003D76C9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 33A5EADA2AB885A0003D76C9 /* SnapKit */; };
 		FF963DDB2ABAC1EF00997530 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = FF963DDA2ABAC1EF00997530 /* FSCalendar */; };
+		FF963DDF2ABAD0A300997530 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF963DDE2ABAD0A300997530 /* CalendarCollectionViewCell.swift */; };
 		FFA0C2AC2ABA74BE009BB78A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFA0C2AB2ABA74BE009BB78A /* GoogleService-Info.plist */; };
 		FFA0C2AF2ABA88DB009BB78A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0C2AE2ABA88DB009BB78A /* CalendarViewController.swift */; };
 		FFA0C2B12ABA88EE009BB78A /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0C2B02ABA88EE009BB78A /* CalendarViewModel.swift */; };
@@ -54,6 +55,7 @@
 		3475E42896CCCEF5B3F091AF /* Pods-MeYouMeYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeYouMeYou.release.xcconfig"; path = "Target Support Files/Pods-MeYouMeYou/Pods-MeYouMeYou.release.xcconfig"; sourceTree = "<group>"; };
 		969A8615F88BC2A0C2332098 /* Pods_MeYouMeYou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeYouMeYou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1902C7AB1CC84167DAE1434 /* Pods-MeYouMeYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeYouMeYou.debug.xcconfig"; path = "Target Support Files/Pods-MeYouMeYou/Pods-MeYouMeYou.debug.xcconfig"; sourceTree = "<group>"; };
+		FF963DDE2ABAD0A300997530 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		FFA0C2AB2ABA74BE009BB78A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FFA0C2AE2ABA88DB009BB78A /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		FFA0C2B02ABA88EE009BB78A /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			children = (
 				FFA0C2AE2ABA88DB009BB78A /* CalendarViewController.swift */,
 				FFA0C2B02ABA88EE009BB78A /* CalendarViewModel.swift */,
+				FF963DDE2ABAD0A300997530 /* CalendarCollectionViewCell.swift */,
 			);
 			path = CalendarPage;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 			files = (
 				FFA0C2B12ABA88EE009BB78A /* CalendarViewModel.swift in Sources */,
 				339AE2012AB9EC58005E1666 /* BackgroundView.swift in Sources */,
+				FF963DDF2ABAD0A300997530 /* CalendarCollectionViewCell.swift in Sources */,
 				339AE1FB2AB9EBC5005E1666 /* DiaryViewController.swift in Sources */,
 				33A5EAC42AB88226003D76C9 /* ViewController.swift in Sources */,
 				FFA0C2AF2ABA88DB009BB78A /* CalendarViewController.swift in Sources */,
