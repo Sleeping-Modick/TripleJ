@@ -18,4 +18,7 @@ enum Constant {
     static var collectionViewContentInset: UIEdgeInsets {
         UIEdgeInsets(top: 0, left: Self.insetX, bottom: 0, right: Self.insetX)
     }
+    
+    // calendarViewController
+    static let calendarBasicMargin: CGFloat = 20
 }
