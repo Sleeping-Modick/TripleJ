@@ -29,12 +29,11 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     
     private func configureUI() {
         contentView.backgroundColor = UIColor(named: "CustomBackgroundColor")
-//        contentView.clipsToBounds = true
         contentView.layer.cornerRadius = Constant.cornerRadius
         
         contentView.addSubview(calendarPostTitle)
         
-        calendarPostTitle.snp.makeConstraints{
+        calendarPostTitle.snp.makeConstraints {
             $0.top.leading.trailing.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(10)
         }
     }
