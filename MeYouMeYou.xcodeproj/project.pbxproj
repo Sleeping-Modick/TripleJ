@@ -17,7 +17,6 @@
 		339AE2062AB9EF7A005E1666 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339AE2052AB9EF7A005E1666 /* Constant.swift */; };
 		339AE2082AB9EFA0005E1666 /* PictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339AE2072AB9EFA0005E1666 /* PictureCell.swift */; };
 		339AE20A2AB9F645005E1666 /* DiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339AE2092AB9F645005E1666 /* DiaryViewModel.swift */; };
-		339AE20C2ABA11F8005E1666 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 339AE20B2ABA11F8005E1666 /* GoogleService-Info.plist */; };
 		339AE20F2ABA12D1005E1666 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 339AE20E2ABA12D1005E1666 /* FirebaseAnalytics */; };
 		339AE2112ABA12D1005E1666 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 339AE2102ABA12D1005E1666 /* FirebaseAuth */; };
 		339AE2132ABA12D1005E1666 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 339AE2122ABA12D1005E1666 /* FirebaseDatabase */; };
@@ -32,6 +31,11 @@
 		33A5EACC2AB88227003D76C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33A5EACA2AB88227003D76C9 /* LaunchScreen.storyboard */; };
 		33A5EAD82AB884DB003D76C9 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 33A5EAD72AB884DB003D76C9 /* .swiftlint.yml */; };
 		33A5EADB2AB885A0003D76C9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 33A5EADA2AB885A0003D76C9 /* SnapKit */; };
+		FF963DDB2ABAC1EF00997530 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = FF963DDA2ABAC1EF00997530 /* FSCalendar */; };
+		FF963DDF2ABAD0A300997530 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF963DDE2ABAD0A300997530 /* CalendarCollectionViewCell.swift */; };
+		FFA0C2AC2ABA74BE009BB78A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFA0C2AB2ABA74BE009BB78A /* GoogleService-Info.plist */; };
+		FFA0C2AF2ABA88DB009BB78A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0C2AE2ABA88DB009BB78A /* CalendarViewController.swift */; };
+		FFA0C2B12ABA88EE009BB78A /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0C2B02ABA88EE009BB78A /* CalendarViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +48,6 @@
 		339AE2052AB9EF7A005E1666 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		339AE2072AB9EFA0005E1666 /* PictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCell.swift; sourceTree = "<group>"; };
 		339AE2092AB9F645005E1666 /* DiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewModel.swift; sourceTree = "<group>"; };
-		339AE20B2ABA11F8005E1666 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		33A5EABC2AB88226003D76C9 /* MeYouMeYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeYouMeYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33A5EABF2AB88226003D76C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33A5EAC12AB88226003D76C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +59,10 @@
 		3475E42896CCCEF5B3F091AF /* Pods-MeYouMeYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeYouMeYou.release.xcconfig"; path = "Target Support Files/Pods-MeYouMeYou/Pods-MeYouMeYou.release.xcconfig"; sourceTree = "<group>"; };
 		969A8615F88BC2A0C2332098 /* Pods_MeYouMeYou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeYouMeYou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1902C7AB1CC84167DAE1434 /* Pods-MeYouMeYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeYouMeYou.debug.xcconfig"; path = "Target Support Files/Pods-MeYouMeYou/Pods-MeYouMeYou.debug.xcconfig"; sourceTree = "<group>"; };
+		FF963DDE2ABAD0A300997530 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
+		FFA0C2AB2ABA74BE009BB78A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FFA0C2AE2ABA88DB009BB78A /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		FFA0C2B02ABA88EE009BB78A /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +73,7 @@
 				339AE2132ABA12D1005E1666 /* FirebaseDatabase in Frameworks */,
 				204CFFD84543C969214ED1EB /* Pods_MeYouMeYou.framework in Frameworks */,
 				339AE21B2ABA12D1005E1666 /* FirebaseStorage in Frameworks */,
+				FF963DDB2ABAC1EF00997530 /* FSCalendar in Frameworks */,
 				339AE2172ABA12D1005E1666 /* FirebaseMessaging in Frameworks */,
 				33A5EADB2AB885A0003D76C9 /* SnapKit in Frameworks */,
 				339AE20F2ABA12D1005E1666 /* FirebaseAnalytics in Frameworks */,
@@ -160,10 +168,11 @@
 				08C716932ABAB0AD00621580 /* DiaryAddPage */,
 				339AE1FF2AB9EC23005E1666 /* Managers */,
 				339AE1FC2AB9EBEE005E1666 /* DiaryPage */,
+				FFA0C2AD2ABA88BD009BB78A /* CalendarPage */,
 				33A5EAC82AB88227003D76C9 /* Assets.xcassets */,
 				33A5EACA2AB88227003D76C9 /* LaunchScreen.storyboard */,
 				33A5EACD2AB88227003D76C9 /* Info.plist */,
-				339AE20B2ABA11F8005E1666 /* GoogleService-Info.plist */,
+				FFA0C2AB2ABA74BE009BB78A /* GoogleService-Info.plist */,
 			);
 			path = MeYouMeYou;
 			sourceTree = "<group>";
@@ -175,6 +184,16 @@
 				3475E42896CCCEF5B3F091AF /* Pods-MeYouMeYou.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FFA0C2AD2ABA88BD009BB78A /* CalendarPage */ = {
+			isa = PBXGroup;
+			children = (
+				FFA0C2AE2ABA88DB009BB78A /* CalendarViewController.swift */,
+				FFA0C2B02ABA88EE009BB78A /* CalendarViewModel.swift */,
+				FF963DDE2ABAD0A300997530 /* CalendarCollectionViewCell.swift */,
+			);
+			path = CalendarPage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,6 +223,7 @@
 				339AE2162ABA12D1005E1666 /* FirebaseMessaging */,
 				339AE2182ABA12D1005E1666 /* FirebaseRemoteConfig */,
 				339AE21A2ABA12D1005E1666 /* FirebaseStorage */,
+				FF963DDA2ABAC1EF00997530 /* FSCalendar */,
 			);
 			productName = MeYouMeYou;
 			productReference = 33A5EABC2AB88226003D76C9 /* MeYouMeYou.app */;
@@ -236,6 +256,7 @@
 			packageReferences = (
 				33A5EAD92AB885A0003D76C9 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				339AE20D2ABA12D1005E1666 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				FF963DD92ABAC1EF00997530 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 			);
 			productRefGroup = 33A5EABD2AB88226003D76C9 /* Products */;
 			projectDirPath = "";
@@ -252,7 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33A5EAD82AB884DB003D76C9 /* .swiftlint.yml in Resources */,
-				339AE20C2ABA11F8005E1666 /* GoogleService-Info.plist in Resources */,
+				FFA0C2AC2ABA74BE009BB78A /* GoogleService-Info.plist in Resources */,
 				33A5EACC2AB88227003D76C9 /* LaunchScreen.storyboard in Resources */,
 				33A5EAC92AB88227003D76C9 /* Assets.xcassets in Resources */,
 			);
@@ -308,9 +329,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFA0C2B12ABA88EE009BB78A /* CalendarViewModel.swift in Sources */,
 				339AE2012AB9EC58005E1666 /* BackgroundView.swift in Sources */,
+				FF963DDF2ABAD0A300997530 /* CalendarCollectionViewCell.swift in Sources */,
 				339AE1FB2AB9EBC5005E1666 /* DiaryViewController.swift in Sources */,
 				33A5EAC42AB88226003D76C9 /* ViewController.swift in Sources */,
+				FFA0C2AF2ABA88DB009BB78A /* CalendarViewController.swift in Sources */,
 				339AE2062AB9EF7A005E1666 /* Constant.swift in Sources */,
 				339AE1FE2AB9EC1E005E1666 /* ImageCacheManager.swift in Sources */,
 				08C716922ABAB0A100621580 /* DiaryAddViewController.swift in Sources */,
@@ -547,6 +571,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		FF963DD92ABAC1EF00997530 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -589,6 +621,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 33A5EAD92AB885A0003D76C9 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		FF963DDA2ABAC1EF00997530 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FF963DD92ABAC1EF00997530 /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
