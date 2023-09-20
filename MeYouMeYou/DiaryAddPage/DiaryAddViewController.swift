@@ -6,24 +6,46 @@
 //
 
 import UIKit
+import SwiftUI
+import SnapKit
 
 class DiaryAddViewController: UIViewController {
 
+    private let diaryAddView = DiaryAddView()
+    
+}
+extension DiaryAddViewController {
+    // MARK: - Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUp()
+    }
+}
 
-        // Do any additional setup after loading the view.
+private extension DiaryAddViewController {
+    func setUp() {
+        view.backgroundColor = .systemBackground
+        view.addSubview(diaryAddView)
+        diaryAddView.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+}
+
+// SwiftUI를 활용한 미리보기
+struct DiaryAddViewController_Previews: PreviewProvider {
+    static var previews: some View {
+        DiaryAddVCReprsentable().edgesIgnoringSafeArea(.all)
+    }
+}
+
+struct DiaryAddVCReprsentable: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> UIViewController {
+        let diaryVC = DiaryAddViewController()
+        return UINavigationController(rootViewController: diaryVC)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) { }
+    typealias UIViewControllerType = UIViewController
 }

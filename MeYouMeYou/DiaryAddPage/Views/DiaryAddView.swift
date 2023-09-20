@@ -6,15 +6,56 @@
 //
 
 import UIKit
+import SnapKit
 
 class DiaryAddView: UIView {
+    
+    private lazy var myCollectionView: UICollectionView = {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.itemSize = CGSize(width: (UIScreen.main.bounds.width / 3), height: (UIScreen.main.bounds.width / 2))
+        flowLayout.minimumLineSpacing = 0
+        flowLayout.minimumInteritemSpacing = 0
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        return collectionView
+    }()
+    
+    private lazy var textView = UITextView()
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    override init(frame: CGRect) {
+        super.init(frame: CGRect.zero)
+        setUp()
     }
-    */
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+private extension DiaryAddView {
+    
+    func setUp() {
+        self.backgroundColor = .blue
+        setUpCollectionView()
+        setUpTextView()
+    }
+    
+    func setUpCollectionView() {
+        self.addSubview(myCollectionView)
+        myCollectionView.backgroundColor = .green
+        myCollectionView.snp.makeConstraints { make in
+            make.top.left.right.equalToSuperview()
+            make.height.equalTo(UIScreen.main.bounds.height * 0.05)
+        }
+    }
+    
+    func setUpTextView() {
+        self.addSubview(textView)
+        textView.backgroundColor = .red
+        textView.snp.makeConstraints { make in
+            make.top.equalTo(myCollectionView.snp.bottom).offset(UIScreen.main.bounds.height * 0.05)
+            make.left.right.equalToSuperview()
+            make.bottom.equalToSuperview().inset(UIScreen.main.bounds.height * 0.05)
+        }
+    }
 }
