@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		08C716922ABAB0A100621580 /* DiaryAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C716912ABAB0A100621580 /* DiaryAddViewController.swift */; };
 		08C716952ABAB31800621580 /* DiaryAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C716942ABAB31800621580 /* DiaryAddView.swift */; };
+		08C716982ABAE04600621580 /* DiaryAddPageButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C716972ABAE04600621580 /* DiaryAddPageButtonCell.swift */; };
 		204CFFD84543C969214ED1EB /* Pods_MeYouMeYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969A8615F88BC2A0C2332098 /* Pods_MeYouMeYou.framework */; };
 		339AE1FB2AB9EBC5005E1666 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339AE1FA2AB9EBC5005E1666 /* DiaryViewController.swift */; };
 		339AE1FE2AB9EC1E005E1666 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339AE1FD2AB9EC1E005E1666 /* ImageCacheManager.swift */; };
@@ -37,6 +38,7 @@
 /* Begin PBXFileReference section */
 		08C716912ABAB0A100621580 /* DiaryAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryAddViewController.swift; sourceTree = "<group>"; };
 		08C716942ABAB31800621580 /* DiaryAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryAddView.swift; sourceTree = "<group>"; };
+		08C716972ABAE04600621580 /* DiaryAddPageButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryAddPageButtonCell.swift; sourceTree = "<group>"; };
 		339AE1FA2AB9EBC5005E1666 /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
 		339AE1FD2AB9EC1E005E1666 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		339AE2002AB9EC58005E1666 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				08C716942ABAB31800621580 /* DiaryAddView.swift */,
+				08C716972ABAE04600621580 /* DiaryAddPageButtonCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				339AE1FB2AB9EBC5005E1666 /* DiaryViewController.swift in Sources */,
 				33A5EAC42AB88226003D76C9 /* ViewController.swift in Sources */,
 				339AE2062AB9EF7A005E1666 /* Constant.swift in Sources */,
+				08C716982ABAE04600621580 /* DiaryAddPageButtonCell.swift in Sources */,
 				339AE1FE2AB9EC1E005E1666 /* ImageCacheManager.swift in Sources */,
 				08C716922ABAB0A100621580 /* DiaryAddViewController.swift in Sources */,
 				339AE2082AB9EFA0005E1666 /* PictureCell.swift in Sources */,
