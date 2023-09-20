@@ -11,10 +11,10 @@ import SwiftUI
 import UIKit
 
 class CalendarViewController: UIViewController {
-    // MARK: Property
-    var dummyCalendarPostTitle =  (0...10).map { _ in "달력 게시글 제목 제목" }
+    private let viewModel = CalendarViewModel()
     
-    var calendarDdayLabel: UILabel = {
+    // MARK: Property
+    private var calendarDdayLabel: UILabel = {
         var label = UILabel()
         label.text = "  D-Day 101  "
         label.textColor = .white
@@ -26,7 +26,7 @@ class CalendarViewController: UIViewController {
         return label
     }()
     
-    lazy var calendarView: FSCalendar = {
+    private lazy var calendarView: FSCalendar = {
         let calendar = FSCalendar()
         calendar.dataSource = self
         calendar.delegate = self
@@ -72,7 +72,7 @@ class CalendarViewController: UIViewController {
         return calendar
     }()
     
-    var calendarCollectionView: UICollectionView = {
+    private var calendarCollectionView: UICollectionView = {
         var layout = UICollectionViewFlowLayout()
         var view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.itemSize = CGSize(
@@ -95,7 +95,7 @@ class CalendarViewController: UIViewController {
         setCollectionView()
     }
     
-    func configureUI() {
+    private func configureUI() {
         view.backgroundColor = UIColor(named: "CustomBackgroundColor")
         
         view.addSubview(calendarDdayLabel)
@@ -120,7 +120,7 @@ class CalendarViewController: UIViewController {
         }
     }
     
-    func setCollectionView() {
+    private func setCollectionView() {
         calendarCollectionView.register(
             CalendarCollectionViewCell.self, forCellWithReuseIdentifier: CalendarCollectionViewCell.identifier)
         
@@ -148,15 +148,15 @@ struct CalendarVCReprsentable: UIViewControllerRepresentable {
 
 extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dummyCalendarPostTitle.count
+        return viewModel.getPostCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
     -> UICollectionViewCell {
-        let cell = calendarCollectionView.dequeueReusableCell(
-            withReuseIdentifier: CalendarCollectionViewCell.identifier, for: indexPath) as? CalendarCollectionViewCell
-        cell?.bind(dummyCalendarPostTitle[indexPath.row])
-        return cell ?? UICollectionViewCell()
+        guard let cell = calendarCollectionView.dequeueReusableCell(
+            withReuseIdentifier: CalendarCollectionViewCell.identifier, for: indexPath) as? CalendarCollectionViewCell else { return UICollectionViewCell() }
+        cell.bind(viewModel.getPost()[indexPath.row])
+        return cell
     }
 }
 

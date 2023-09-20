@@ -11,7 +11,7 @@ import SnapKit
 class CalendarCollectionViewCell: UICollectionViewCell {
     static var identifier = "CalendarCollectionViewCell"
     
-    var calendarPostTitle: UILabel = {
+    private var calendarPostTitle: UILabel = {
         var label = UILabel()
         label.text = "empty"
         label.font = UIFont.boldSystemFont(ofSize: 20)
@@ -27,7 +27,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureUI() {
+    private func configureUI() {
         contentView.backgroundColor = UIColor(named: "CustomBackgroundColor")
 //        contentView.clipsToBounds = true
         contentView.layer.cornerRadius = Constant.cornerRadius
