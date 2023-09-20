@@ -83,6 +83,8 @@ private extension DiaryAddView {
         titleTextField.placeholder = "제목"
         titleTextField.font = UIFont.boldSystemFont(ofSize: 30)
         //        titleTextField.layer.borderWidth = 1
+        titleTextField.backgroundColor = .pointColor1
+        titleTextField.layer.cornerRadius = 20
         
         titleTextField.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -95,7 +97,7 @@ private extension DiaryAddView {
         contentView.addSubview(myCollectionView)
         myCollectionView.backgroundColor = .clear
         myCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(titleTextField.snp.bottom)
+            make.top.equalTo(titleTextField.snp.bottom).offset(Constant.defalutPadding)
             make.left.right.equalToSuperview().inset(Constant.defalutPadding)
             make.height.equalTo(Constant.screenHeight * 0.04)
         }
@@ -107,9 +109,9 @@ private extension DiaryAddView {
         textView.backgroundColor = .pointColor1
         textView.textContainerInset = UIEdgeInsets(top: 18, left: 18, bottom: 18, right: 18)
         textView.snp.makeConstraints { make in
-            make.top.equalTo(myCollectionView.snp.bottom).offset(Constant.screenHeight * 0.05)
+            make.top.equalTo(myCollectionView.snp.bottom).offset(Constant.defalutPadding)
             make.left.right.equalToSuperview().inset(Constant.defalutPadding)
-            make.height.equalTo(Constant.screenHeight * 0.5)
+            make.height.equalTo(Constant.screenHeight * 0.9)
             make.bottom.equalToSuperview().inset(Constant.screenHeight * 0.05)
         }
     }
