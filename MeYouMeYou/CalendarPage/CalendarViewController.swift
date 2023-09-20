@@ -52,8 +52,6 @@ class CalendarViewController: UIViewController {
         calendar.appearance.headerTitleColor = .black
         
         // 요일 UI 설정
-        //            calendar.appearance.weekdayFont = UIFont.font(.pretendardRegular, ofSize: 12)
-        //            calendar.appearance.weekdayTextColor = .black
         calendar.appearance.weekdayFont = UIFont.systemFont(ofSize: 12)
         calendar.appearance.weekdayTextColor = .black
         
@@ -78,10 +76,11 @@ class CalendarViewController: UIViewController {
         var layout = UICollectionViewFlowLayout()
         var view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.itemSize = CGSize(
-            width: (UIScreen.main.bounds.width / 2) - 5, height: (UIScreen.main.bounds.width / 2) - 5)
-        layout.minimumLineSpacing = 5
-        layout.minimumInteritemSpacing = 5
+            width: (UIScreen.main.bounds.width / 2) - 40, height: (UIScreen.main.bounds.width / 2) - 40)
+        layout.minimumLineSpacing = 20
+        layout.minimumInteritemSpacing = 20
         layout.scrollDirection = .horizontal
+        view.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         view.layer.cornerRadius = Constant.cornerRadius
         view.backgroundColor = UIColor(named: "SubPrimaryColor")
         return view
@@ -122,7 +121,8 @@ class CalendarViewController: UIViewController {
     }
     
     func setCollectionView() {
-        calendarCollectionView.register(CalendarCollectionViewCell.self, forCellWithReuseIdentifier: CalendarCollectionViewCell.identifier)
+        calendarCollectionView.register(
+            CalendarCollectionViewCell.self, forCellWithReuseIdentifier: CalendarCollectionViewCell.identifier)
         
         calendarCollectionView.delegate = self
         calendarCollectionView.dataSource = self
@@ -153,7 +153,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
     -> UICollectionViewCell {
-        var cell = calendarCollectionView.dequeueReusableCell(
+        let cell = calendarCollectionView.dequeueReusableCell(
             withReuseIdentifier: CalendarCollectionViewCell.identifier, for: indexPath) as? CalendarCollectionViewCell
         cell?.bind(dummyCalendarPostTitle[indexPath.row])
         return cell ?? UICollectionViewCell()
