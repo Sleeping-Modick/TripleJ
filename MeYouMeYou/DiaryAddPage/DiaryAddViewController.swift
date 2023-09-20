@@ -11,7 +11,7 @@ import SnapKit
 class DiaryAddViewController: UIViewController {
 
     private let diaryAddView = DiaryAddView()
-    
+    private let viewModle = DiaryAddViewModel()
 }
 extension DiaryAddViewController {
     // MARK: - Life Cycle
@@ -35,6 +35,7 @@ private extension DiaryAddViewController {
             DiaryAddPageButtonCell.self,
             forCellWithReuseIdentifier: DiaryAddPageButtonCell.identifier
         )
+        diaryAddView.textView.delegate = self
     }
 }
 
@@ -43,7 +44,7 @@ extension DiaryAddViewController: UICollectionViewDelegate, UICollectionViewData
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return 5
+        return viewModle.buttonList.count
     }
     
     func collectionView(
@@ -54,6 +55,7 @@ extension DiaryAddViewController: UICollectionViewDelegate, UICollectionViewData
             withReuseIdentifier: DiaryAddPageButtonCell.identifier,
             for: indexPath
         ) as? DiaryAddPageButtonCell else { return UICollectionViewCell() }
+        cell.bind(title: viewModle.buttonList[indexPath.row])
         return cell
     }
     
@@ -65,6 +67,13 @@ extension DiaryAddViewController: UICollectionViewDelegate, UICollectionViewData
 //        return CGSize(width: size.0 + cellInset, height: size.1 + cellInset)
 //    }
 
+}
+
+extension DiaryAddViewController: UITextViewDelegate {
+
+    func textViewDidChange(_ textView: UITextView) {
+        print(textView.text)
+    }
 }
 
 extension UIColor {

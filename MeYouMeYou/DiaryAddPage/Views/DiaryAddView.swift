@@ -20,7 +20,7 @@ class DiaryAddView: UIView {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         
-        let showRow: CGFloat = 5
+        let showRow: CGFloat = 4
         let spacing: CGFloat = 10
         let cellWidth = (
             Constant.screenWidth
@@ -40,8 +40,8 @@ class DiaryAddView: UIView {
         return collectionView
     }()
     
-    private lazy var textView = UITextView()
-
+    var textView = UITextView()
+    
     override init(frame: CGRect) {
         super.init(frame: CGRect.zero)
         setUp()
@@ -82,12 +82,12 @@ private extension DiaryAddView {
         contentView.addSubview(titleTextField)
         titleTextField.placeholder = "제목"
         titleTextField.font = UIFont.boldSystemFont(ofSize: 30)
-//        titleTextField.layer.borderWidth = 1
+        //        titleTextField.layer.borderWidth = 1
         
         titleTextField.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.left.right.equalToSuperview().inset(Constant.defalutPadding)
-            make.height.equalTo(Constant.screenHeight * 0.07)
+            //            make.height.equalTo(Constant.screenHeight * 0.07)
         }
     }
     
@@ -105,7 +105,7 @@ private extension DiaryAddView {
         contentView.addSubview(textView)
         textView.layer.cornerRadius = 16
         textView.backgroundColor = .pointColor1
-        
+        textView.textContainerInset = UIEdgeInsets(top: 18, left: 18, bottom: 18, right: 18)
         textView.snp.makeConstraints { make in
             make.top.equalTo(myCollectionView.snp.bottom).offset(Constant.screenHeight * 0.05)
             make.left.right.equalToSuperview().inset(Constant.defalutPadding)

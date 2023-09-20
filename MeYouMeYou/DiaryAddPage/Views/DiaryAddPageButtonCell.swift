@@ -14,6 +14,8 @@ class DiaryAddPageButtonCell: UICollectionViewCell {
     
     private lazy var button = UIButton()
     
+    // MARK: - initializer
+
     override init(frame: CGRect) {
         super.init(frame: CGRect.zero)
         setUp()
@@ -21,6 +23,11 @@ class DiaryAddPageButtonCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    // MARK: - method
+
+    func bind(title: String) {
+        button.setTitle(title, for: .normal)
     }
 }
 
