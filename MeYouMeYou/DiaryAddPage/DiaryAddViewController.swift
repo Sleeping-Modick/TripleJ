@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwiftUI
 import SnapKit
 
 class DiaryAddViewController: UIViewController {
@@ -31,21 +30,4 @@ private extension DiaryAddViewController {
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
-}
-
-// SwiftUI를 활용한 미리보기
-struct DiaryAddViewController_Previews: PreviewProvider {
-    static var previews: some View {
-        DiaryAddVCReprsentable().edgesIgnoringSafeArea(.all)
-    }
-}
-
-struct DiaryAddVCReprsentable: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> UIViewController {
-        let diaryVC = DiaryAddViewController()
-        return UINavigationController(rootViewController: diaryVC)
-    }
-    
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) { }
-    typealias UIViewControllerType = UIViewController
 }

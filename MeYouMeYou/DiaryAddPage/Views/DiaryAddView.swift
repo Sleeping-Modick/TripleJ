@@ -45,7 +45,7 @@ private extension DiaryAddView {
         myCollectionView.backgroundColor = .green
         myCollectionView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
-            make.height.equalTo(UIScreen.main.bounds.height * 0.05)
+            make.height.equalTo(Constant.screenHeight * 0.05)
         }
     }
     
@@ -53,9 +53,9 @@ private extension DiaryAddView {
         self.addSubview(textView)
         textView.backgroundColor = .red
         textView.snp.makeConstraints { make in
-            make.top.equalTo(myCollectionView.snp.bottom).offset(UIScreen.main.bounds.height * 0.05)
-            make.left.right.equalToSuperview()
-            make.bottom.equalToSuperview().inset(UIScreen.main.bounds.height * 0.05)
+            make.top.equalTo(myCollectionView.snp.bottom).offset(Constant.screenHeight * 0.05)
+            make.left.right.equalToSuperview().inset(Constant.defalutPadding)
+            make.bottom.equalToSuperview().inset(Constant.screenHeight * 0.05)
         }
     }
 }
