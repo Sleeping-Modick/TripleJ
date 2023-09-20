@@ -19,3 +19,10 @@ enum Constant {
         UIEdgeInsets(top: 0, left: Self.insetX, bottom: 0, right: Self.insetX)
     }
 }
+
+extension Constant {
+    static let defalutPadding: CGFloat = 16
+    static let screenHeight = UIScreen.main.bounds.height
+    static let screenWidth = UIScreen.main.bounds.width
+}
+
