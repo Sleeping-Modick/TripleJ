@@ -9,39 +9,27 @@ import UIKit
 import SnapKit
 
 class DiaryAddView: UIView {
-    
+    // MARK: - Property
+
     private lazy var scrollView = UIScrollView()
-    
     private lazy var contentView = UIView()
-    
+    private lazy var imageView = UIImageView()
     private lazy var titleTextField = UITextField()
-    
-    lazy var myCollectionView: UICollectionView = {
+    private lazy var optionCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .horizontal
-        
-        let showRow: CGFloat = 4
-        let spacing: CGFloat = 10
-        let cellWidth = (
-            Constant.screenWidth
-            - (Constant.defalutPadding * 2)
-            - (spacing * (showRow - 1)
-              )
-        ) / showRow
-        flowLayout.itemSize = CGSize(
-            width: (cellWidth),
-            height: (Constant.screenHeight * 0.04)
-        )
-        flowLayout.minimumLineSpacing = spacing
-        flowLayout.minimumInteritemSpacing = 0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.isPagingEnabled = true
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        flowLayout.scrollDirection = .horizontal
+//        flowLayout.itemSize = CGSize(width: (UIScreen.main.bounds.width / 3), height: (UIScreen.main.bounds.width / 2))
+        flowLayout.minimumLineSpacing = 0
+        flowLayout.minimumInteritemSpacing = 0
+
         return collectionView
     }()
-    
-    var textView = UITextView()
-    
+    private lazy var contentTextView = UITextView()
+    // MARK: - Initializer
+
     override init(frame: CGRect) {
         super.init(frame: CGRect.zero)
         setUp()
@@ -58,15 +46,18 @@ private extension DiaryAddView {
         self.backgroundColor = .clear
         setUpScrollView()
         setUpContentView()
-        setUpTitleTextField()
-        setUpCollectionView()
-        setUpTextView()
+        setUpImageView()
+        setUpTitleLabel()
+        setUpOptionCollectionView()
+        setUpContentTextView()
     }
     
     func setUpScrollView() {
         self.addSubview(scrollView)
+        scrollView.backgroundColor = .green
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+//            make.left.right.equalToSuperview().inset(Constant.defalutPadding)
         }
     }
     
@@ -78,41 +69,42 @@ private extension DiaryAddView {
         }
     }
     
-    func setUpTitleTextField() {
+    func setUpImageView() {
+        contentView.addSubview(imageView)
+        imageView.backgroundColor = .blue
+        imageView.snp.makeConstraints { make in
+            make.height.width.equalTo(scrollView.snp.width)
+            make.top.centerX.equalToSuperview()
+        }
+    }
+    
+    func setUpTitleLabel() {
         contentView.addSubview(titleTextField)
+        titleTextField.backgroundColor = .red
         titleTextField.placeholder = "제목"
-        titleTextField.font = UIFont.boldSystemFont(ofSize: 30)
-        //        titleTextField.layer.borderWidth = 1
-        titleTextField.backgroundColor = .pointColor1
-        titleTextField.layer.cornerRadius = 20
-        
+        titleTextField.textAlignment = .center
         titleTextField.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.left.right.equalToSuperview().inset(Constant.defalutPadding)
-            //            make.height.equalTo(Constant.screenHeight * 0.07)
+            make.top.equalTo(imageView.snp.bottom).offset(Constant.defalutPadding)
+            make.left.right.equalToSuperview()
         }
     }
     
-    func setUpCollectionView() {
-        contentView.addSubview(myCollectionView)
-        myCollectionView.backgroundColor = .clear
-        myCollectionView.snp.makeConstraints { make in
+    func setUpOptionCollectionView() {
+        contentView.addSubview(optionCollectionView)
+        optionCollectionView.backgroundColor = .cyan
+        optionCollectionView.snp.makeConstraints { make in
             make.top.equalTo(titleTextField.snp.bottom).offset(Constant.defalutPadding)
-            make.left.right.equalToSuperview().inset(Constant.defalutPadding)
-            make.height.equalTo(Constant.screenHeight * 0.04)
+            make.left.right.equalToSuperview()
+            make.height.equalTo(50)
         }
     }
     
-    func setUpTextView() {
-        contentView.addSubview(textView)
-        textView.layer.cornerRadius = 16
-        textView.backgroundColor = .pointColor1
-        textView.textContainerInset = UIEdgeInsets(top: 18, left: 18, bottom: 18, right: 18)
-        textView.snp.makeConstraints { make in
-            make.top.equalTo(myCollectionView.snp.bottom).offset(Constant.defalutPadding)
-            make.left.right.equalToSuperview().inset(Constant.defalutPadding)
-            make.height.equalTo(Constant.screenHeight * 0.9)
-            make.bottom.equalToSuperview().inset(Constant.screenHeight * 0.05)
+    func setUpContentTextView() {
+        contentView.addSubview(contentTextView)
+        contentTextView.snp.makeConstraints { make in
+            make.top.equalTo(optionCollectionView.snp.bottom).offset(Constant.defalutPadding)
+            make.height.equalTo(Constant.screenWidth)
+            make.left.right.bottom.equalToSuperview().inset(Constant.defalutPadding)
         }
     }
 }
