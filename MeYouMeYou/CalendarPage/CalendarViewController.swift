@@ -65,6 +65,7 @@ class CalendarViewController: UIViewController {
         calendar.appearance.subtitleTodayColor = .black
         calendar.appearance.todayColor = UIColor(named: "PrimaryColor")
         
+        // TODO: 확인
         // 토요일 라벨의 textColor를 blue로 설정
         calendar.calendarWeekdayView.weekdayLabels[5].textColor = .blue
         // 일요일 라벨의 textColor를 red로 설정
@@ -72,18 +73,44 @@ class CalendarViewController: UIViewController {
         return calendar
     }()
     
-    private var calendarCollectionView: UICollectionView = {
-        var layout = UICollectionViewFlowLayout()
-        var view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        layout.itemSize = CGSize(
-            width: (UIScreen.main.bounds.width / 2) - 40, height: (UIScreen.main.bounds.width / 2) - 40)
-        layout.minimumLineSpacing = 20
-        layout.minimumInteritemSpacing = 20
-        layout.scrollDirection = .horizontal
-        view.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-        view.layer.cornerRadius = Constant.cornerRadius
+    var postView: UIView = {
+        var view = UIView()
         view.backgroundColor = UIColor(named: "SubPrimaryColor")
+        view.layer.cornerRadius = Constant.cornerRadius
         return view
+    }()
+    
+    var postImageView: UIImageView = {
+        var view = UIImageView()
+        view.image = UIImage(named: "dummy")
+        view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
+        view.layer.cornerRadius = Constant.calendarBasicMargin
+        return view
+    }()
+    
+    var postTitleLabel: UILabel = {
+        var label = UILabel()
+        label.text = "준영"
+        label.font = UIFont.systemFont(ofSize: 24)
+        return label
+    }()
+    
+    var likeButton: UIImageView = {
+        var view = UIImageView()
+        view.image = UIImage(systemName: "heart.fill")
+        view.tintColor = .systemRed
+        return view
+    }()
+    
+    var postContentLabel: UILabel = {
+        var label = UILabel()
+        label.text = "내용"
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.backgroundColor = UIColor(named: "CustomBackgroundColor")
+        label.clipsToBounds = true
+        label.layer.cornerRadius = Constant.cornerRadius
+        return label
     }()
     
     // MARK: LifeCycle
@@ -95,12 +122,31 @@ class CalendarViewController: UIViewController {
         setCollectionView()
     }
     
+    lazy private var calendarCollectionView: UICollectionView = {
+        var layout = UICollectionViewFlowLayout()
+        var view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        layout.itemSize = CGSize(
+            width: UIScreen.main.bounds.width * 0.21, height: UIScreen.main.bounds.height * 0.05)
+                layout.minimumLineSpacing = 5
+        layout.scrollDirection = .horizontal
+        layout.collectionView?.isPagingEnabled = false
+        view.decelerationRate = UIScrollView.DecelerationRate.fast
+        view.backgroundColor = UIColor(named: "SubPrimaryColor")
+        return view
+    }()
+    
     private func configureUI() {
         view.backgroundColor = UIColor(named: "CustomBackgroundColor")
-        
+
         view.addSubview(calendarDdayLabel)
         view.addSubview(calendarView)
-        view.addSubview(calendarCollectionView)
+        
+        view.addSubview(postView)
+        postView.addSubview(postImageView)
+        postView.addSubview(likeButton)
+        postView.addSubview(postTitleLabel)
+        postView.addSubview(postContentLabel)
+        postView.addSubview(calendarCollectionView)
         
         calendarDdayLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
@@ -112,11 +158,44 @@ class CalendarViewController: UIViewController {
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(Constant.calendarBasicMargin)
         }
         
-        calendarCollectionView.snp.makeConstraints {
+        postView.snp.makeConstraints {
             $0.top.equalTo(calendarView.snp.bottom).inset(-Constant.calendarBasicMargin)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(Constant.calendarBasicMargin)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(Constant.calendarBasicMargin)
-            $0.height.equalTo(200)
+            $0.height.equalTo(UIScreen.main.bounds.height * 0.25)
+        }
+        
+        postImageView.snp.makeConstraints {
+            $0.leading.equalTo(postView).inset(10)
+            $0.centerY.equalTo(postView)
+            $0.width.equalTo(150)
+            $0.height.equalTo(180)
+        }
+        
+        likeButton.snp.makeConstraints {
+            $0.top.trailing.equalTo(postView).inset(10)
+            $0.width.height.equalTo(40)
+        }
+        
+        postTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(postImageView)
+            $0.leading.equalTo(postImageView.snp.trailing).inset(-10)
+            $0.trailing.equalTo(likeButton.snp.leading).inset(-10)
+        }
+        
+        postContentLabel.snp.makeConstraints {
+            $0.top.equalTo(postTitleLabel.snp.bottom).inset(-10)
+            $0.leading.equalTo(postImageView.snp.trailing).inset(-10)
+            $0.trailing.equalTo(postView).inset(10)
+            $0.height.equalTo(80)
+        }
+        
+        calendarCollectionView.snp.makeConstraints {
+            $0.top.equalTo(postContentLabel.snp.bottom).inset(-10)
+            $0.leading.equalTo(postImageView.snp.trailing).inset(-10)
+            $0.trailing.equalTo(postView).inset(10)
+            $0.bottom.equalTo(postImageView)
+            $0.height.equalTo(UIScreen.main.bounds.height * 0.05)
         }
     }
     
@@ -129,23 +208,6 @@ class CalendarViewController: UIViewController {
     }
 }
 
-// SwiftUI를 활용한 미리보기
-struct CalendarViewController_Previews: PreviewProvider {
-    static var previews: some View {
-        CalendarVCReprsentable().edgesIgnoringSafeArea(.all)
-    }
-}
-
-struct CalendarVCReprsentable: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> UIViewController {
-        let calendarVC = CalendarViewController()
-        return UINavigationController(rootViewController: calendarVC)
-    }
-    
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
-    typealias UIViewControllerType = UIViewController
-}
-
 extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.getPostCount()
@@ -154,7 +216,10 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
     -> UICollectionViewCell {
         guard let cell = calendarCollectionView.dequeueReusableCell(
-            withReuseIdentifier: CalendarCollectionViewCell.identifier, for: indexPath) as? CalendarCollectionViewCell else { return UICollectionViewCell() }
+            withReuseIdentifier: CalendarCollectionViewCell.identifier, for: indexPath)
+                as? CalendarCollectionViewCell else {
+            return UICollectionViewCell()
+        }
         cell.bind(viewModel.getPost()[indexPath.row])
         return cell
     }
@@ -199,4 +264,50 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
             return .label
         }
     }
+}
+
+extension CalendarViewController: UIScrollViewDelegate {
+    func scrollViewWillEndDragging(
+        _ scrollView: UIScrollView,
+        withVelocity velocity: CGPoint,
+        targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+          guard let layout = self.calendarCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
+              return
+          }
+          // CollectionView Item Size
+          let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
+          
+          // 이동한 x좌표 값과 item의 크기를 비교 후 페이징 값 설정
+          let estimatedIndex = scrollView.contentOffset.x / cellWidthIncludingSpacing
+          let index: Int
+          
+          // 스크롤 방향 체크
+          // item 절반 사이즈 만큼 스크롤로 판단하여 올림, 내림 처리
+          if velocity.x > 0 {
+              index = Int(ceil(estimatedIndex))
+          } else if velocity.x < 0 {
+              index = Int(floor(estimatedIndex))
+          } else {
+              index = Int(round(estimatedIndex))
+          }
+          // 위 코드를 통해 페이징 될 좌표 값을 targetContentOffset에 대입
+          targetContentOffset.pointee = CGPoint(x: CGFloat(index) * cellWidthIncludingSpacing - 20, y: 0)
+      }
+}
+
+// SwiftUI를 활용한 미리보기
+struct CalendarViewController_Previews: PreviewProvider {
+    static var previews: some View {
+        CalendarVCReprsentable().edgesIgnoringSafeArea(.all)
+    }
+}
+
+struct CalendarVCReprsentable: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> UIViewController {
+        let calendarVC = CalendarViewController()
+        return UINavigationController(rootViewController: calendarVC)
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
+    typealias UIViewControllerType = UIViewController
 }
