@@ -12,6 +12,7 @@ import SwiftUI
 final class DiaryViewController: UIViewController {
     private let backgroundView = BackgroundView()
     private let pictureView = PictureView()
+    private let searchView = SearchView()
     private let viewModel = DiaryViewModel()
     
     override func viewDidLoad() {
@@ -19,20 +20,27 @@ final class DiaryViewController: UIViewController {
         
         configure()
         setLayout()
+        setGesture()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 }
 
 private extension DiaryViewController {
-    private func configure() {
+    func configure() {
         view.backgroundColor = .systemBackground
         
         pictureView.collectionView.dataSource = self
         pictureView.collectionView.delegate = self
         pictureView.collectionView.prefetchDataSource = self
+        searchView.searchBar.delegate = self
+        searchView.isHidden = true
     }
     
-    private func setLayout() {
-        [backgroundView, pictureView].forEach {
+    func setLayout() {
+        [backgroundView, pictureView, searchView].forEach {
             view.addSubview($0)
         }
         
@@ -45,6 +53,46 @@ private extension DiaryViewController {
             $0.height.equalTo(Constant.itemSize.height)
             $0.centerY.equalToSuperview()
         }
+        
+        searchView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).inset(Constant.defalutPadding)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(Constant.defalutPadding)
+            $0.height.equalTo(120)
+        }
+    }
+    
+    func setGesture() {
+        let upGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
+        let downGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
+        upGesture.direction = .up
+        downGesture.direction = .down
+        
+        [upGesture, downGesture].forEach {
+            view.addGestureRecognizer($0)
+        }
+    }
+    
+    @objc func handleSwipe(_ gesture: UISwipeGestureRecognizer) {
+        if gesture.direction == .up {
+            searchView.isHidden = true
+        }
+        if gesture.direction == .down {
+            searchView.isHidden = false
+        }
+    }
+}
+
+extension DiaryViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("text: \(searchText)")
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        print("====> \(searchBar.text)")
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("search click")
     }
 }
 
@@ -108,6 +156,16 @@ extension DiaryViewController: UICollectionViewDelegate, UICollectionViewDataSou
              }
          }, completion: nil)
      }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailVC = DiaryDetailViewController()
+        detailVC.configure(image: UIImage(named: viewModel.dummyImageName))
+        detailVC.modalTransitionStyle = .crossDissolve
+        detailVC.modalPresentationStyle = .custom
+        searchView.isHidden = true
+        view.endEditing(true)
+        present(detailVC, animated: true)
+    }
 }
 
 extension DiaryViewController: UICollectionViewDataSourcePrefetching {

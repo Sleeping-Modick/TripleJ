@@ -10,6 +10,21 @@
 		08C716922ABAB0A100621580 /* DiaryAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C716912ABAB0A100621580 /* DiaryAddViewController.swift */; };
 		08C716952ABAB31800621580 /* DiaryAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C716942ABAB31800621580 /* DiaryAddView.swift */; };
 		204CFFD84543C969214ED1EB /* Pods_MeYouMeYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969A8615F88BC2A0C2332098 /* Pods_MeYouMeYou.framework */; };
+		3363D9102AC1FEF800265FBC /* DiaryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3363D90F2AC1FEF800265FBC /* DiaryDetailView.swift */; };
+		337848022AC6124B001FCC1E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337848012AC6124B001FCC1E /* LoginViewController.swift */; };
+		337848042AC612AC001FCC1E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337848032AC612AC001FCC1E /* LoginViewModel.swift */; };
+		337848072AC6131D001FCC1E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337848062AC6131D001FCC1E /* LoginView.swift */; };
+		337848092AC6BDEE001FCC1E /* ButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337848082AC6BDEE001FCC1E /* ButtonFactory.swift */; };
+		3378480B2AC6BE03001FCC1E /* LabelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3378480A2AC6BE03001FCC1E /* LabelFactory.swift */; };
+		3378480D2AC6BE1C001FCC1E /* ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3378480C2AC6BE1C001FCC1E /* ThemeColor.swift */; };
+		337848112AC6BF81001FCC1E /* ThemeFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337848102AC6BF81001FCC1E /* ThemeFont.swift */; };
+		337848132AC6BFAA001FCC1E /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337848122AC6BFAA001FCC1E /* FirebaseManager.swift */; };
+		337848152AC6BFD4001FCC1E /* FirebaseErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337848142AC6BFD4001FCC1E /* FirebaseErrors.swift */; };
+		337848182AC6C179001FCC1E /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337848172AC6C179001FCC1E /* UserDefaultsManager.swift */; };
+		3378481A2AC6C1AC001FCC1E /* EmailValidCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337848192AC6C1AC001FCC1E /* EmailValidCheck.swift */; };
+		3378481C2AC6C1D2001FCC1E /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3378481B2AC6C1D2001FCC1E /* AlertFactory.swift */; };
+		3378481E2AC6C22B001FCC1E /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3378481D2AC6C22B001FCC1E /* UIViewController+.swift */; };
+		337848212AC6CBBD001FCC1E /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337848202AC6CBBD001FCC1E /* UITextField+.swift */; };
 		339AE1FB2AB9EBC5005E1666 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339AE1FA2AB9EBC5005E1666 /* DiaryViewController.swift */; };
 		339AE1FE2AB9EC1E005E1666 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339AE1FD2AB9EC1E005E1666 /* ImageCacheManager.swift */; };
 		339AE2012AB9EC58005E1666 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339AE2002AB9EC58005E1666 /* BackgroundView.swift */; };
@@ -25,6 +40,8 @@
 		339AE2172ABA12D1005E1666 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 339AE2162ABA12D1005E1666 /* FirebaseMessaging */; };
 		339AE2192ABA12D1005E1666 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 339AE2182ABA12D1005E1666 /* FirebaseRemoteConfig */; };
 		339AE21B2ABA12D1005E1666 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 339AE21A2ABA12D1005E1666 /* FirebaseStorage */; };
+		339AE2252ABB127D005E1666 /* DiaryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339AE2242ABB127D005E1666 /* DiaryDetailViewController.swift */; };
+		339AE2272ABB2802005E1666 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339AE2262ABB2802005E1666 /* SearchView.swift */; };
 		33A5EAC02AB88226003D76C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A5EABF2AB88226003D76C9 /* AppDelegate.swift */; };
 		33A5EAC22AB88226003D76C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A5EAC12AB88226003D76C9 /* SceneDelegate.swift */; };
 		33A5EAC42AB88226003D76C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A5EAC32AB88226003D76C9 /* ViewController.swift */; };
@@ -37,6 +54,21 @@
 /* Begin PBXFileReference section */
 		08C716912ABAB0A100621580 /* DiaryAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryAddViewController.swift; sourceTree = "<group>"; };
 		08C716942ABAB31800621580 /* DiaryAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryAddView.swift; sourceTree = "<group>"; };
+		3363D90F2AC1FEF800265FBC /* DiaryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryDetailView.swift; sourceTree = "<group>"; };
+		337848012AC6124B001FCC1E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		337848032AC612AC001FCC1E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		337848062AC6131D001FCC1E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		337848082AC6BDEE001FCC1E /* ButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFactory.swift; sourceTree = "<group>"; };
+		3378480A2AC6BE03001FCC1E /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
+		3378480C2AC6BE1C001FCC1E /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
+		337848102AC6BF81001FCC1E /* ThemeFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeFont.swift; sourceTree = "<group>"; };
+		337848122AC6BFAA001FCC1E /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		337848142AC6BFD4001FCC1E /* FirebaseErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseErrors.swift; sourceTree = "<group>"; };
+		337848172AC6C179001FCC1E /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		337848192AC6C1AC001FCC1E /* EmailValidCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidCheck.swift; sourceTree = "<group>"; };
+		3378481B2AC6C1D2001FCC1E /* AlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
+		3378481D2AC6C22B001FCC1E /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		337848202AC6CBBD001FCC1E /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		339AE1FA2AB9EBC5005E1666 /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
 		339AE1FD2AB9EC1E005E1666 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		339AE2002AB9EC58005E1666 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
@@ -45,6 +77,8 @@
 		339AE2072AB9EFA0005E1666 /* PictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCell.swift; sourceTree = "<group>"; };
 		339AE2092AB9F645005E1666 /* DiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewModel.swift; sourceTree = "<group>"; };
 		339AE20B2ABA11F8005E1666 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		339AE2242ABB127D005E1666 /* DiaryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryDetailViewController.swift; sourceTree = "<group>"; };
+		339AE2262ABB2802005E1666 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		33A5EABC2AB88226003D76C9 /* MeYouMeYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeYouMeYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33A5EABF2AB88226003D76C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33A5EAC12AB88226003D76C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,12 +137,67 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3363D9112AC205FA00265FBC /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				339AE1FA2AB9EBC5005E1666 /* DiaryViewController.swift */,
+				339AE2242ABB127D005E1666 /* DiaryDetailViewController.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		337848052AC612D4001FCC1E /* LoginPage */ = {
+			isa = PBXGroup;
+			children = (
+				337848062AC6131D001FCC1E /* LoginView.swift */,
+				337848032AC612AC001FCC1E /* LoginViewModel.swift */,
+				337848012AC6124B001FCC1E /* LoginViewController.swift */,
+			);
+			path = LoginPage;
+			sourceTree = "<group>";
+		};
+		3378480E2AC6BE3C001FCC1E /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				3378480C2AC6BE1C001FCC1E /* ThemeColor.swift */,
+				337848102AC6BF81001FCC1E /* ThemeFont.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		3378480F2AC6BE45001FCC1E /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				3378481B2AC6C1D2001FCC1E /* AlertFactory.swift */,
+				337848082AC6BDEE001FCC1E /* ButtonFactory.swift */,
+				3378480A2AC6BE03001FCC1E /* LabelFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		337848162AC6BFE7001FCC1E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				337848142AC6BFD4001FCC1E /* FirebaseErrors.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3378481F2AC6C231001FCC1E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3378481D2AC6C22B001FCC1E /* UIViewController+.swift */,
+				337848202AC6CBBD001FCC1E /* UITextField+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		339AE1FC2AB9EBEE005E1666 /* DiaryPage */ = {
 			isa = PBXGroup;
 			children = (
 				339AE2022AB9EC6A005E1666 /* Views */,
 				339AE2092AB9F645005E1666 /* DiaryViewModel.swift */,
-				339AE1FA2AB9EBC5005E1666 /* DiaryViewController.swift */,
+				3363D9112AC205FA00265FBC /* VC */,
 			);
 			path = DiaryPage;
 			sourceTree = "<group>";
@@ -116,7 +205,9 @@
 		339AE1FF2AB9EC23005E1666 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				337848122AC6BFAA001FCC1E /* FirebaseManager.swift */,
 				339AE1FD2AB9EC1E005E1666 /* ImageCacheManager.swift */,
+				337848172AC6C179001FCC1E /* UserDefaultsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -125,8 +216,10 @@
 			isa = PBXGroup;
 			children = (
 				339AE2002AB9EC58005E1666 /* BackgroundView.swift */,
+				3363D90F2AC1FEF800265FBC /* DiaryDetailView.swift */,
 				339AE2072AB9EFA0005E1666 /* PictureCell.swift */,
 				339AE2032AB9EF61005E1666 /* PictureView.swift */,
+				339AE2262ABB2802005E1666 /* SearchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -157,9 +250,15 @@
 				33A5EAC12AB88226003D76C9 /* SceneDelegate.swift */,
 				339AE2052AB9EF7A005E1666 /* Constant.swift */,
 				33A5EAC32AB88226003D76C9 /* ViewController.swift */,
-				08C716932ABAB0AD00621580 /* DiaryAddPage */,
+				337848192AC6C1AC001FCC1E /* EmailValidCheck.swift */,
+				3378481F2AC6C231001FCC1E /* Extension */,
+				3378480E2AC6BE3C001FCC1E /* Config */,
+				3378480F2AC6BE45001FCC1E /* Factory */,
 				339AE1FF2AB9EC23005E1666 /* Managers */,
+				337848162AC6BFE7001FCC1E /* Models */,
+				08C716932ABAB0AD00621580 /* DiaryAddPage */,
 				339AE1FC2AB9EBEE005E1666 /* DiaryPage */,
+				337848052AC612D4001FCC1E /* LoginPage */,
 				33A5EAC82AB88227003D76C9 /* Assets.xcassets */,
 				33A5EACA2AB88227003D76C9 /* LaunchScreen.storyboard */,
 				33A5EACD2AB88227003D76C9 /* Info.plist */,
@@ -308,16 +407,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				337848112AC6BF81001FCC1E /* ThemeFont.swift in Sources */,
 				339AE2012AB9EC58005E1666 /* BackgroundView.swift in Sources */,
+				3378481A2AC6C1AC001FCC1E /* EmailValidCheck.swift in Sources */,
 				339AE1FB2AB9EBC5005E1666 /* DiaryViewController.swift in Sources */,
 				33A5EAC42AB88226003D76C9 /* ViewController.swift in Sources */,
 				339AE2062AB9EF7A005E1666 /* Constant.swift in Sources */,
+				337848152AC6BFD4001FCC1E /* FirebaseErrors.swift in Sources */,
+				337848212AC6CBBD001FCC1E /* UITextField+.swift in Sources */,
 				339AE1FE2AB9EC1E005E1666 /* ImageCacheManager.swift in Sources */,
+				3378480D2AC6BE1C001FCC1E /* ThemeColor.swift in Sources */,
 				08C716922ABAB0A100621580 /* DiaryAddViewController.swift in Sources */,
+				337848092AC6BDEE001FCC1E /* ButtonFactory.swift in Sources */,
+				3363D9102AC1FEF800265FBC /* DiaryDetailView.swift in Sources */,
+				337848182AC6C179001FCC1E /* UserDefaultsManager.swift in Sources */,
 				339AE2082AB9EFA0005E1666 /* PictureCell.swift in Sources */,
+				3378481E2AC6C22B001FCC1E /* UIViewController+.swift in Sources */,
 				339AE2042AB9EF61005E1666 /* PictureView.swift in Sources */,
 				33A5EAC02AB88226003D76C9 /* AppDelegate.swift in Sources */,
+				337848042AC612AC001FCC1E /* LoginViewModel.swift in Sources */,
+				3378481C2AC6C1D2001FCC1E /* AlertFactory.swift in Sources */,
 				339AE20A2AB9F645005E1666 /* DiaryViewModel.swift in Sources */,
+				3378480B2AC6BE03001FCC1E /* LabelFactory.swift in Sources */,
+				337848072AC6131D001FCC1E /* LoginView.swift in Sources */,
+				339AE2272ABB2802005E1666 /* SearchView.swift in Sources */,
+				337848022AC6124B001FCC1E /* LoginViewController.swift in Sources */,
+				339AE2252ABB127D005E1666 /* DiaryDetailViewController.swift in Sources */,
+				337848132AC6BFAA001FCC1E /* FirebaseManager.swift in Sources */,
 				08C716952ABAB31800621580 /* DiaryAddView.swift in Sources */,
 				33A5EAC22AB88226003D76C9 /* SceneDelegate.swift in Sources */,
 			);
