@@ -68,7 +68,6 @@ class CalendarViewController: UIViewController {
         // 다중 선택 활성화
         calendar.allowsMultipleSelection = true
         
-        // TODO: 확인
         // 토요일 라벨의 textColor를 blue로 설정
         calendar.calendarWeekdayView.weekdayLabels[5].textColor = .blue
         // 일요일 라벨의 textColor를 red로 설정
@@ -77,8 +76,8 @@ class CalendarViewController: UIViewController {
     }()
     
     // 시작 날짜와 종료 날짜를 저장할 변수를 선언합니다.
-        var startDate: Date?
-        var endDate: Date?
+    var startDate: Date?
+    var endDate: Date?
     
     var postView: UIView = {
         var view = UIView()
@@ -134,7 +133,7 @@ class CalendarViewController: UIViewController {
         var view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.itemSize = CGSize(
             width: UIScreen.main.bounds.width * 0.21, height: UIScreen.main.bounds.height * 0.05)
-                layout.minimumLineSpacing = 5
+        layout.minimumLineSpacing = 5
         layout.scrollDirection = .horizontal
         layout.collectionView?.isPagingEnabled = false
         view.decelerationRate = UIScrollView.DecelerationRate.fast
@@ -145,7 +144,7 @@ class CalendarViewController: UIViewController {
     
     private func configureUI() {
         view.backgroundColor = UIColor(named: "CustomBackgroundColor")
-
+        
         view.addSubview(calendarDdayLabel)
         view.addSubview(calendarView)
         
@@ -168,8 +167,7 @@ class CalendarViewController: UIViewController {
         
         postView.snp.makeConstraints {
             $0.top.equalTo(calendarView.snp.bottom).inset(-Constant.calendarBasicMargin)
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(Constant.calendarBasicMargin)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(Constant.calendarBasicMargin)
+            $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(Constant.calendarBasicMargin)
             $0.height.equalTo(UIScreen.main.bounds.height * 0.25)
         }
         
@@ -259,14 +257,14 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         }
     }
     
-    // 일요일에 해당되는 모든 날짜의 색상 red로 변경
+    // 요일별 색상 설정
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date)
     -> UIColor? {
         let day = Calendar.current.component(.weekday, from: date) - 1
         
-        if Calendar.current.shortWeekdaySymbols[day] == "Sun" {
+        if Calendar.current.shortWeekdaySymbols[day] == "일" {
             return .systemRed
-        } else if Calendar.current.shortWeekdaySymbols[day] == "Sat" {
+        } else if Calendar.current.shortWeekdaySymbols[day] == "토" {
             return .systemBlue
         } else {
             return .label
@@ -274,46 +272,46 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     }
     
     // 날짜를 선택할 때 호출되는 delegate 메서드입니다.
-        func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-            if startDate == nil {
-                // 시작 날짜를 선택합니다.
-                
-                startDate = date
-                endDate = date
-            } else if startDate != nil && endDate == startDate {
-                // 종료 날짜를 선택합니다.
-                endDate = date
-            } else {
-                // 이미 범위가 선택된 경우, 다시 시작 날짜를 선택합니다.
-                startDate = date
-                endDate = date
-                // 선택된 날짜 초기화
-                if let selectedDates = calendar.selectedDates as? [Date] {
-                    for date in selectedDates {
-                        calendarView.deselect(date)
-                    }
-                }
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        if startDate == nil {
+            // 시작 날짜를 선택합니다.
+            
+            startDate = date
+            endDate = date
+        } else if startDate != nil && endDate == startDate {
+            // 종료 날짜를 선택합니다.
+            endDate = date
+        } else {
+            // 이미 범위가 선택된 경우, 다시 시작 날짜를 선택합니다.
+            startDate = date
+            endDate = date
+            // 선택된 날짜 초기화
+            
+            for date in calendar.selectedDates {
+                calendarView.deselect(date)
             }
-
-            // 선택한 범위 내의 모든 날짜를 선택합니다.
-            if let startDate = startDate, let endDate = endDate {
-                selectDatesInRange(startDate: startDate, endDate: endDate)
-            }
+            
         }
-
-        // 선택한 범위 내의 모든 날짜를 선택하는 함수입니다.
-        func selectDatesInRange(startDate: Date, endDate: Date) {
-            // startDate와 endDate 사이의 모든 날짜를 선택합니다.
-            var currentDate = startDate
-            while currentDate <= endDate {
-                calendarView.select(currentDate)
-                currentDate = Calendar.current.date(byAdding: .day, value: 1, to: currentDate)!
-            }
-
-            // 선택된 범위의 스타일을 변경합니다.
-            calendarView.appearance.selectionColor = UIColor(named: "SubPrimaryColor")
-            calendarView.reloadData()
+        
+        // 선택한 범위 내의 모든 날짜를 선택합니다.
+        if let startDate = startDate, let endDate = endDate {
+            selectDatesInRange(startDate: startDate, endDate: endDate)
         }
+    }
+    
+    // 선택한 범위 내의 모든 날짜를 선택하는 함수입니다.
+    func selectDatesInRange(startDate: Date, endDate: Date) {
+        // startDate와 endDate 사이의 모든 날짜를 선택합니다.
+        var currentDate = startDate
+        while currentDate <= endDate {
+            calendarView.select(currentDate)
+            currentDate = Calendar.current.date(byAdding: .day, value: 1, to: currentDate)!
+        }
+        
+        // 선택된 범위의 스타일을 변경합니다.
+        calendarView.appearance.selectionColor = UIColor(named: "SubPrimaryColor")
+        calendarView.reloadData()
+    }
 }
 
 extension CalendarViewController: UIScrollViewDelegate {
@@ -321,28 +319,28 @@ extension CalendarViewController: UIScrollViewDelegate {
         _ scrollView: UIScrollView,
         withVelocity velocity: CGPoint,
         targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-          guard let layout = self.calendarCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
-              return
-          }
-          // CollectionView Item Size
-          let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
-          
-          // 이동한 x좌표 값과 item의 크기를 비교 후 페이징 값 설정
-          let estimatedIndex = scrollView.contentOffset.x / cellWidthIncludingSpacing
-          let index: Int
-          
-          // 스크롤 방향 체크
-          // item 절반 사이즈 만큼 스크롤로 판단하여 올림, 내림 처리
-          if velocity.x > 0 {
-              index = Int(ceil(estimatedIndex))
-          } else if velocity.x < 0 {
-              index = Int(floor(estimatedIndex))
-          } else {
-              index = Int(round(estimatedIndex))
-          }
-          // 위 코드를 통해 페이징 될 좌표 값을 targetContentOffset에 대입
-          targetContentOffset.pointee = CGPoint(x: CGFloat(index) * cellWidthIncludingSpacing - 20, y: 0)
-      }
+            guard let layout = self.calendarCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
+                return
+            }
+            // CollectionView Item Size
+            let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
+            
+            // 이동한 x좌표 값과 item의 크기를 비교 후 페이징 값 설정
+            let estimatedIndex = scrollView.contentOffset.x / cellWidthIncludingSpacing
+            let index: Int
+            
+            // 스크롤 방향 체크
+            // item 절반 사이즈 만큼 스크롤로 판단하여 올림, 내림 처리
+            if velocity.x > 0 {
+                index = Int(ceil(estimatedIndex))
+            } else if velocity.x < 0 {
+                index = Int(floor(estimatedIndex))
+            } else {
+                index = Int(round(estimatedIndex))
+            }
+            // 위 코드를 통해 페이징 될 좌표 값을 targetContentOffset에 대입
+            targetContentOffset.pointee = CGPoint(x: CGFloat(index) * cellWidthIncludingSpacing - 20, y: 0)
+        }
 }
 
 // SwiftUI를 활용한 미리보기
