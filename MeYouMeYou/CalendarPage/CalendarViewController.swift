@@ -55,7 +55,7 @@ class CalendarViewController: UIViewController {
         calendar.appearance.weekdayFont = UIFont.systemFont(ofSize: 12)
         calendar.appearance.weekdayTextColor = .black
         
-        //
+        // 선택된 날짜
         calendar.appearance.selectionColor = UIColor(named: "SubPrimaryColor")
         
         // 날짜 UI 설정
@@ -65,6 +65,9 @@ class CalendarViewController: UIViewController {
         calendar.appearance.subtitleTodayColor = .black
         calendar.appearance.todayColor = UIColor(named: "PrimaryColor")
         
+        // 다중 선택 활성화
+        calendar.allowsMultipleSelection = true
+        
         // TODO: 확인
         // 토요일 라벨의 textColor를 blue로 설정
         calendar.calendarWeekdayView.weekdayLabels[5].textColor = .blue
@@ -72,6 +75,10 @@ class CalendarViewController: UIViewController {
         calendar.calendarWeekdayView.weekdayLabels.last!.textColor = .red
         return calendar
     }()
+    
+    // 시작 날짜와 종료 날짜를 저장할 변수를 선언합니다.
+        var startDate: Date?
+        var endDate: Date?
     
     var postView: UIView = {
         var view = UIView()
@@ -132,6 +139,7 @@ class CalendarViewController: UIViewController {
         layout.collectionView?.isPagingEnabled = false
         view.decelerationRate = UIScrollView.DecelerationRate.fast
         view.backgroundColor = UIColor(named: "SubPrimaryColor")
+        view.showsHorizontalScrollIndicator = false
         return view
     }()
     
@@ -264,6 +272,48 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
             return .label
         }
     }
+    
+    // 날짜를 선택할 때 호출되는 delegate 메서드입니다.
+        func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+            if startDate == nil {
+                // 시작 날짜를 선택합니다.
+                
+                startDate = date
+                endDate = date
+            } else if startDate != nil && endDate == startDate {
+                // 종료 날짜를 선택합니다.
+                endDate = date
+            } else {
+                // 이미 범위가 선택된 경우, 다시 시작 날짜를 선택합니다.
+                startDate = date
+                endDate = date
+                // 선택된 날짜 초기화
+                if let selectedDates = calendar.selectedDates as? [Date] {
+                    for date in selectedDates {
+                        calendarView.deselect(date)
+                    }
+                }
+            }
+
+            // 선택한 범위 내의 모든 날짜를 선택합니다.
+            if let startDate = startDate, let endDate = endDate {
+                selectDatesInRange(startDate: startDate, endDate: endDate)
+            }
+        }
+
+        // 선택한 범위 내의 모든 날짜를 선택하는 함수입니다.
+        func selectDatesInRange(startDate: Date, endDate: Date) {
+            // startDate와 endDate 사이의 모든 날짜를 선택합니다.
+            var currentDate = startDate
+            while currentDate <= endDate {
+                calendarView.select(currentDate)
+                currentDate = Calendar.current.date(byAdding: .day, value: 1, to: currentDate)!
+            }
+
+            // 선택된 범위의 스타일을 변경합니다.
+            calendarView.appearance.selectionColor = UIColor(named: "SubPrimaryColor")
+            calendarView.reloadData()
+        }
 }
 
 extension CalendarViewController: UIScrollViewDelegate {
