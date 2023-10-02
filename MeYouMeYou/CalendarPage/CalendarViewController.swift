@@ -14,6 +14,17 @@ class CalendarViewController: UIViewController {
     private let viewModel = CalendarViewModel()
     
     // MARK: Property
+    
+    private var addAnniversaryButton: UIButton = {
+        var button = UIButton()
+        button.setTitle(" 기념일 추가 ", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
+        button.backgroundColor = UIColor(named: "PrimaryColor")
+        button.layer.cornerRadius = 12
+        button.layer.borderWidth = 0
+        return button
+    }()
+    
     private var calendarDdayLabel: UILabel = {
         var label = UILabel()
         label.text = "  D-Day 101  "
@@ -145,6 +156,7 @@ class CalendarViewController: UIViewController {
     private func configureUI() {
         view.backgroundColor = UIColor(named: "CustomBackgroundColor")
         
+        view.addSubview(addAnniversaryButton)
         view.addSubview(calendarDdayLabel)
         view.addSubview(calendarView)
         
@@ -154,6 +166,11 @@ class CalendarViewController: UIViewController {
         postView.addSubview(postTitleLabel)
         postView.addSubview(postContentLabel)
         postView.addSubview(calendarCollectionView)
+        
+        addAnniversaryButton.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).inset(Constant.calendarBasicMargin)
+        }
         
         calendarDdayLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
