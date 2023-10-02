@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0814F9DA2ABB4A86006D8150 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0814F9D92ABB4A86006D8150 /* GoogleService-Info.plist */; };
+		084C45F72AC1B7E1002999DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 084C45F62AC1B7E1002999DF /* GoogleService-Info.plist */; };
 		08C716922ABAB0A100621580 /* DiaryAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C716912ABAB0A100621580 /* DiaryAddViewController.swift */; };
 		08C716952ABAB31800621580 /* DiaryAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C716942ABAB31800621580 /* DiaryAddView.swift */; };
 		08C716982ABAE04600621580 /* DiaryAddPageButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C716972ABAE04600621580 /* DiaryAddPageButtonCell.swift */; };
@@ -41,7 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0814F9D92ABB4A86006D8150 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		084C45F62AC1B7E1002999DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		08C716912ABAB0A100621580 /* DiaryAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryAddViewController.swift; sourceTree = "<group>"; };
 		08C716942ABAB31800621580 /* DiaryAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryAddView.swift; sourceTree = "<group>"; };
 		08C716972ABAE04600621580 /* DiaryAddPageButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryAddPageButtonCell.swift; sourceTree = "<group>"; };
@@ -178,7 +178,7 @@
 				33A5EAC82AB88227003D76C9 /* Assets.xcassets */,
 				33A5EACA2AB88227003D76C9 /* LaunchScreen.storyboard */,
 				33A5EACD2AB88227003D76C9 /* Info.plist */,
-				0814F9D92ABB4A86006D8150 /* GoogleService-Info.plist */,
+				084C45F62AC1B7E1002999DF /* GoogleService-Info.plist */,
 			);
 			path = MeYouMeYou;
 			sourceTree = "<group>";
@@ -279,7 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33A5EAD82AB884DB003D76C9 /* .swiftlint.yml in Resources */,
-				0814F9DA2ABB4A86006D8150 /* GoogleService-Info.plist in Resources */,
+				084C45F72AC1B7E1002999DF /* GoogleService-Info.plist in Resources */,
 				33A5EACC2AB88227003D76C9 /* LaunchScreen.storyboard in Resources */,
 				33A5EAC92AB88227003D76C9 /* Assets.xcassets in Resources */,
 			);

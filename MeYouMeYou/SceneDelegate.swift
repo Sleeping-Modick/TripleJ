@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = CalendarViewController()
+        window?.rootViewController = UINavigationController(rootViewController: DiaryAddViewController())
         window?.makeKeyAndVisible()
     }
     

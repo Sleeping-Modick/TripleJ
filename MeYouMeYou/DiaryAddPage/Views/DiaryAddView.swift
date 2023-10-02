@@ -8,25 +8,36 @@
 import UIKit
 import SnapKit
 
-class DiaryAddView: UIView {
+final class DiaryAddView: UIView {
     // MARK: - Property
-
     private lazy var scrollView = UIScrollView()
+    
     private lazy var contentView = UIView()
-    private lazy var imageView = UIImageView()
-    private lazy var titleTextField = UITextField()
+    
+    lazy var imageButton = UIButton()
+    
+    lazy var titleTextField: UITextField = {
+        let view = UITextField()
+        let placeHolder = NSAttributedString(
+            string: "제목", attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray]
+        )
+        view.attributedPlaceholder = placeHolder
+        view.font = UIFont.boldSystemFont(ofSize: 20)
+        view.textAlignment = .center
+        return view
+    }()
+    
     private lazy var optionCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        
         flowLayout.scrollDirection = .horizontal
-//        flowLayout.itemSize = CGSize(width: (UIScreen.main.bounds.width / 3), height: (UIScreen.main.bounds.width / 2))
         flowLayout.minimumLineSpacing = 0
         flowLayout.minimumInteritemSpacing = 0
 
         return collectionView
     }()
+    
     private lazy var contentTextView = UITextView()
     // MARK: - Initializer
 
@@ -41,12 +52,17 @@ class DiaryAddView: UIView {
     
 }
 private extension DiaryAddView {
+    // MARK: - SetUp
+
+    // TODO: - titleTextField 기능 활성화
+    // TODO: - optionCollectionView 기능 활성화
+    // TODO: - textView 기능 활성화
     
     func setUp() {
         self.backgroundColor = .clear
         setUpScrollView()
         setUpContentView()
-        setUpImageView()
+        setUpImageButton()
         setUpTitleLabel()
         setUpOptionCollectionView()
         setUpContentTextView()
@@ -54,10 +70,8 @@ private extension DiaryAddView {
     
     func setUpScrollView() {
         self.addSubview(scrollView)
-        scrollView.backgroundColor = .green
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
-//            make.left.right.equalToSuperview().inset(Constant.defalutPadding)
         }
     }
     
@@ -69,10 +83,14 @@ private extension DiaryAddView {
         }
     }
     
-    func setUpImageView() {
-        contentView.addSubview(imageView)
-        imageView.backgroundColor = .blue
-        imageView.snp.makeConstraints { make in
+    func setUpImageButton() {
+        contentView.addSubview(imageButton)
+        imageButton.tintColor = .pointColor2
+        imageButton.backgroundColor = .pointColor1
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 100)
+        let image = UIImage(systemName: "plus.app.fill", withConfiguration: imageConfig)
+        imageButton.setImage(image, for: .normal)
+        imageButton.snp.makeConstraints { make in
             make.height.width.equalTo(scrollView.snp.width)
             make.top.centerX.equalToSuperview()
         }
@@ -80,12 +98,10 @@ private extension DiaryAddView {
     
     func setUpTitleLabel() {
         contentView.addSubview(titleTextField)
-        titleTextField.backgroundColor = .red
-        titleTextField.placeholder = "제목"
-        titleTextField.textAlignment = .center
         titleTextField.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).offset(Constant.defalutPadding)
-            make.left.right.equalToSuperview()
+            make.top.equalTo(imageButton.snp.bottom).offset(Constant.defalutPadding)
+//            make.left.right.equalToSuperview().inset(Constant.defalutPadding)
+            make.centerX.equalToSuperview()
         }
     }
     
