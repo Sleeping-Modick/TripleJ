@@ -205,7 +205,7 @@ private extension LoginViewController {
     var welcomAlert: UIAlertController {
         let alert = AlertFactory.makeAlert(
             title: "🎉 회원가입 완료 🎉",
-            message: "플랜비에 오신 것을 환영합니다.",
+            message: "MeYouMeYou에 오신 것을 환영합니다.",
             firstActionTitle: "확인",
             firstActionCompletion: { [weak self] in
                 guard let self = self else { return }
@@ -231,7 +231,7 @@ private extension LoginViewController {
     var loginAlert: UIAlertController {
         let alert = AlertFactory.makeAlert(
             title: "🎉 로그인 완료 🎉",
-            message: "플랜비에 오신 것을 환영합니다.",
+            message: "MeYouMeYou에 오신 것을 환영합니다.",
             firstActionTitle: "확인",
             firstActionCompletion: { [weak self] in
                 guard let self = self else { return }
