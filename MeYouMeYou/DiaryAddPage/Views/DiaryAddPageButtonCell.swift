@@ -26,16 +26,14 @@ class DiaryAddPageButtonCell: UICollectionViewCell {
     }
     // MARK: - method
 
-    func bind(title: String) {
-        button.setTitle(title, for: .normal)
+    func bind(image: UIImage?) {
+        button.setImage(image, for: .normal)
     }
 }
 
 private extension DiaryAddPageButtonCell {
     func setUp() {
         contentView.addSubview(button)
-        button.layer.cornerRadius = 16
-        button.backgroundColor = .pointColor2
         button.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }

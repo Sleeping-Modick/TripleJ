@@ -6,8 +6,15 @@
 //
 
 import Foundation
+import UIKit
 
-struct DiaryAddViewModel {
-    // TODO: - tempAry 수정필요
-    let buttonList = ["사진", "날짜", "날씨", "내용", "Tag"]
+final class DiaryAddViewModel {
+    let buttonList = [
+        UIImage(systemName: "face.smiling"),
+        UIImage(systemName: "sun.max"),
+        UIImage(systemName: "heart"),
+        UIImage(systemName: "tag")
+    ]
+    let cellSpacing: CGFloat = 10
+    
 }

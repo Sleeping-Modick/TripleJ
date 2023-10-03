@@ -10,11 +10,23 @@ import SnapKit
 
 final class DiaryAddView: UIView {
     // MARK: - Property
-    private lazy var scrollView = UIScrollView()
+    private lazy var scrollView: UIScrollView = {
+        let view = UIScrollView()
+        view.showsVerticalScrollIndicator = false
+        return view
+    }()
     
     private lazy var contentView = UIView()
     
-    lazy var imageButton = UIButton()
+    lazy var imageButton: UIButton = {
+        let button = UIButton()
+        button.tintColor = .systemGray
+        button.backgroundColor = .systemGray5
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 100)
+        let image = UIImage(systemName: "plus.app.fill", withConfiguration: imageConfig)
+        button.setImage(image, for: .normal)
+        return button
+    }()
     
     lazy var titleTextField: UITextField = {
         let view = UITextField()
@@ -27,18 +39,34 @@ final class DiaryAddView: UIView {
         return view
     }()
     
-    private lazy var optionCollectionView: UICollectionView = {
+    lazy var optionCV: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         flowLayout.scrollDirection = .horizontal
-        flowLayout.minimumLineSpacing = 0
-        flowLayout.minimumInteritemSpacing = 0
-
         return collectionView
     }()
     
-    private lazy var contentTextView = UITextView()
+    private lazy var cvTopDivider: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray
+        return view
+    }()
+    
+    private lazy var cvBottomDivider: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray
+        return view
+    }()
+    
+    lazy var contentTextView: UITextView = {
+        let view = UITextView()
+        view.backgroundColor = .yellow
+        view.text = "오늘 하루는 어땠어요?"
+        view.isScrollEnabled = false
+        return view
+    }()
+    
     // MARK: - Initializer
 
     override init(frame: CGRect) {
@@ -53,18 +81,17 @@ final class DiaryAddView: UIView {
 }
 private extension DiaryAddView {
     // MARK: - SetUp
-
-    // TODO: - titleTextField 기능 활성화
+    
     // TODO: - optionCollectionView 기능 활성화
-    // TODO: - textView 기능 활성화
     
     func setUp() {
-        self.backgroundColor = .clear
         setUpScrollView()
         setUpContentView()
         setUpImageButton()
         setUpTitleLabel()
-        setUpOptionCollectionView()
+        setUpCVTopDivder()
+        setUpOptionCV()
+        setUpCVBottomDivder()
         setUpContentTextView()
     }
     
@@ -85,11 +112,6 @@ private extension DiaryAddView {
     
     func setUpImageButton() {
         contentView.addSubview(imageButton)
-        imageButton.tintColor = .pointColor2
-        imageButton.backgroundColor = .pointColor1
-        let imageConfig = UIImage.SymbolConfiguration(pointSize: 100)
-        let image = UIImage(systemName: "plus.app.fill", withConfiguration: imageConfig)
-        imageButton.setImage(image, for: .normal)
         imageButton.snp.makeConstraints { make in
             make.height.width.equalTo(scrollView.snp.width)
             make.top.centerX.equalToSuperview()
@@ -100,26 +122,43 @@ private extension DiaryAddView {
         contentView.addSubview(titleTextField)
         titleTextField.snp.makeConstraints { make in
             make.top.equalTo(imageButton.snp.bottom).offset(Constant.defalutPadding)
-//            make.left.right.equalToSuperview().inset(Constant.defalutPadding)
             make.centerX.equalToSuperview()
         }
     }
     
-    func setUpOptionCollectionView() {
-        contentView.addSubview(optionCollectionView)
-        optionCollectionView.backgroundColor = .cyan
-        optionCollectionView.snp.makeConstraints { make in
+    func setUpCVTopDivder() {
+        contentView.addSubview(cvTopDivider)
+        cvTopDivider.snp.makeConstraints { make in
             make.top.equalTo(titleTextField.snp.bottom).offset(Constant.defalutPadding)
-            make.left.right.equalToSuperview()
-            make.height.equalTo(50)
+            make.left.right.equalToSuperview().inset(Constant.defalutPadding)
+            make.height.equalTo(1)
+        }
+    }
+    
+    func setUpOptionCV() {
+        contentView.addSubview(optionCV)
+        optionCV.snp.makeConstraints { make in
+            make.top.equalTo(cvTopDivider.snp.bottom).offset(Constant.defalutPadding)
+            make.centerX.equalToSuperview()
+            make.left.right.equalToSuperview().inset(Constant.defalutPadding)
+            make.height.equalTo(Constant.screenHeight * 0.05)
+        }
+    }
+    
+    func setUpCVBottomDivder() {
+        contentView.addSubview(cvBottomDivider)
+        cvBottomDivider.snp.makeConstraints { make in
+            make.top.equalTo(optionCV.snp.bottom).offset(Constant.defalutPadding)
+            make.left.right.equalToSuperview().inset(Constant.defalutPadding)
+            make.height.equalTo(1)
         }
     }
     
     func setUpContentTextView() {
         contentView.addSubview(contentTextView)
         contentTextView.snp.makeConstraints { make in
-            make.top.equalTo(optionCollectionView.snp.bottom).offset(Constant.defalutPadding)
-            make.height.equalTo(Constant.screenWidth)
+            make.top.equalTo(cvBottomDivider.snp.bottom).offset(Constant.defalutPadding)
+            make.height.equalTo(Constant.screenHeight * 0.05)
             make.left.right.bottom.equalToSuperview().inset(Constant.defalutPadding)
         }
     }
