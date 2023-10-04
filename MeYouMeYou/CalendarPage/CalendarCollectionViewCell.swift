@@ -14,7 +14,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     private var calendarPostTitle: UILabel = {
         var label = UILabel()
         label.text = "empty"
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = UIFont.boldSystemFont(ofSize: 10)
         return label
     }()
     
@@ -28,7 +28,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     }
     
     private func configureUI() {
-        contentView.backgroundColor = UIColor(named: "CustomBackgroundColor")
+        contentView.backgroundColor = UIColor(named: "PrimaryColor")
         contentView.layer.cornerRadius = Constant.cornerRadius
         
         contentView.addSubview(calendarPostTitle)
