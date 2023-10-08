@@ -148,11 +148,11 @@ extension DiaryViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     private func zoomFocusCell(cell: UICollectionViewCell, isFocus: Bool ) {
-         UIView.animate( withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
              if isFocus {
                  cell.transform = .identity
              } else {
-                 cell.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+                 cell.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
              }
          }, completion: nil)
      }
@@ -177,19 +177,10 @@ extension DiaryViewController: UICollectionViewDataSourcePrefetching {
     }
 }
 
-// SwiftUI를 활용한 미리보기
-struct DiaryViewController_Previews: PreviewProvider {
+struct DiaryViewVCPreView: PreviewProvider {
     static var previews: some View {
-        DiaryVCReprsentable().edgesIgnoringSafeArea(.all)
-    }
-}
-
-struct DiaryVCReprsentable: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> UIViewController {
         let diaryVC = DiaryViewController()
-        return UINavigationController(rootViewController: diaryVC)
+        UINavigationController(rootViewController: diaryVC)
+            .toPreview().edgesIgnoringSafeArea(.all)
     }
-    
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) { }
-    typealias UIViewControllerType = UIViewController
 }

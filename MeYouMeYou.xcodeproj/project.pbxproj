@@ -186,8 +186,8 @@
 		3378481F2AC6C231001FCC1E /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				3378481D2AC6C22B001FCC1E /* UIViewController+.swift */,
 				337848202AC6CBBD001FCC1E /* UITextField+.swift */,
+				3378481D2AC6C22B001FCC1E /* UIViewController+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
